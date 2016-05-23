@@ -21,3 +21,6 @@ if ($response->getStatusCode() == 200) {
   echo 'Done!';
 }
 ```
+
+## Questions
+Please post your question to doo-projekti@helsinki.fi
