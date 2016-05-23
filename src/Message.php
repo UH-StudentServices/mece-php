@@ -17,6 +17,8 @@ use LogicException;
  *
  * Provides an class for setting and dumping the message that is designed to be
  * sent to MECE Service.
+ *
+ * @author Mikael Kundert <mikael.kundert@wunderkraut.com>
  */
 class Message {
 

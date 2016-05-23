@@ -13,6 +13,8 @@ use InvalidArgumentException;
  * Class MultilingualStringValue
  *
  * Provides an class for containing multilingual strings.
+ *
+ * @author Mikael Kundert <mikael.kundert@wunderkraut.com>
  */
 class MultilingualStringValue {
 

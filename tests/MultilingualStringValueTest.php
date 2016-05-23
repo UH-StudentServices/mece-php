@@ -12,6 +12,7 @@ use InvalidArgumentException;
 
 /**
  * @coversDefaultClass \UniversityofHelsinki\MECE\MultilingualStringValue
+ * @author Mikael Kundert <mikael.kundert@wunderkraut.com>
  */
 class MultilingualStringValueTest extends \PHPUnit_Framework_TestCase {
 
