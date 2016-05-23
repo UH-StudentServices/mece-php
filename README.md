@@ -22,5 +22,8 @@ if ($response->getStatusCode() == 200) {
 }
 ```
 
+## Projects that uses this library
+* [University of Helsinki, MECE Drupal 7 module](https://github.com/UH-StudentServices/uh-mece/tree/7.x-1.x)
+
 ## Questions
 Please post your question to doo-projekti@helsinki.fi
