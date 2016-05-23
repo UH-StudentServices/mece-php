@@ -1,0 +1,23 @@
+{
+  "name": "UniversityofHelsinki/MECE",
+  "type": "library",
+  "description": "This library provides ability to build message objects for Universify of Helsinki Message Center",
+  "keywords": ["messaging", "mece", "university"],
+  "homepage": "http://www.helsinki.fi",
+  "license": "GPLv3",
+  "authors": [
+    {
+      "name": "Mikael Kundert",
+      "email": "mikael.kundert@wunderkraut.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.31"
+  },
+  "require-dev": {
+    "phpunit/phpunit": ">=4.8.0"
+  }
+  "autoload": {
+    "psr-0": { "UniversityofHelsinki\\MECE\\": "src/" }
+  }
+}
