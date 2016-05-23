@@ -19,5 +19,6 @@
   }
   "autoload": {
     "psr-0": { "UniversityofHelsinki\\MECE\\": "src/" }
-  }
+  },
+  "target-dir": "UniversifyofHelsinki/MECE"
 }
