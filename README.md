@@ -1,6 +1,6 @@
 # MECE PHP Library
-Offers an PHP library for preparing an message for University of Helsinki
-Message Center.
+Offers an PHP library for preparing an message for Message Center (MECE)
+maintained by Center for Information Technology (University of Helsinki).
 
 License: [GPLv3](LICENSE.txt)
 
