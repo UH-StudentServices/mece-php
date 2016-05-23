@@ -8,10 +8,15 @@
 require_once __DIR__ . '/../src/MECEMultilingualStringValue.php';
 require_once __DIR__ . '/../src/MECEServiceMessage.php';
 
+namespace UniversityofHelsinki\MECE\tests;
+
+use UniversityofHelsinki\MECE\MECEMultilingualStringValue;
+use UniversityofHelsinki\MECE\MECEServiceMessage;
+
 /**
  * Class MECEServiceMessageTest
  *
- * @coversDefaultClass \MECEServiceMessage
+ * @coversDefaultClass \UniversityofHelsinki\MECE\MECEServiceMessage
  */
 class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
 

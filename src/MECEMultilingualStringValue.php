@@ -5,6 +5,8 @@
  * @see README.md how to contribute to this project
  */
 
+namespace UniversityofHelsinki\MECE;
+
 /**
  * Class MECEMultilingualStringValue
  *

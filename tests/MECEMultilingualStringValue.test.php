@@ -7,8 +7,12 @@
 
 require_once __DIR__ . '/../src/MECEMultilingualStringValue.php';
 
+namespace UniversityofHelsinki\MECE\tests;
+
+use UniversityofHelsinki\MECE\MECEMultilingualStringValue;
+
 /**
- * @coversDefaultClass \MECEMultilingualStringValue
+ * @coversDefaultClass \UniversityofHelsinki\MECE\MECEMultilingualStringValue
  */
 class MECEMultilingualStringValueTest extends PHPUnit_Framework_TestCase {
 
