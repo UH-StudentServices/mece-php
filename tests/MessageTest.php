@@ -5,20 +5,20 @@
  * @see README.md how to contribute to this project
  */
 
-require_once __DIR__ . '/../src/MultilingualStringValue.php';
-require_once __DIR__ . '/../src/Message.php';
-
 namespace UniversityofHelsinki\MECE\tests;
 
 use UniversityofHelsinki\MECE\MultilingualStringValue;
 use UniversityofHelsinki\MECE\Message;
+use DateTime;
+use DateTimeZone;
+use InvalidArgumentException;
 
 /**
  * Class MessageTest
  *
  * @coversDefaultClass \UniversityofHelsinki\MECE\Message
  */
-class MessageTest extends PHPUnit_Framework_TestCase {
+class MessageTest extends \PHPUnit_Framework_TestCase {
 
   private $recipients = array('user1', 'user2', 'user3', 'user4');
   private $source;
@@ -176,7 +176,7 @@ class MessageTest extends PHPUnit_Framework_TestCase {
   public function testExpirationInvalidTimeZone() {
     $class = new Message($this->recipients, $this->source);
     $incorrectValue = new DateTime('+5 day', new DateTimeZone('Europe/Helsinki'));
-    $this->setExpectedException(LogicException::class, 'expiration DateTime value must be in timezone "Etc/Zulu"');
+    $this->setExpectedException(\LogicException::class, 'expiration DateTime value must be in timezone "Etc/Zulu"');
     $class->setExpiration($incorrectValue);
   }
 
@@ -187,7 +187,7 @@ class MessageTest extends PHPUnit_Framework_TestCase {
   public function testSubmittedInvalidTimeZone() {
     $class = new Message($this->recipients, $this->source);
     $incorrectValue = new DateTime('-1 day', new DateTimeZone('Europe/Helsinki'));
-    $this->setExpectedException(LogicException::class, 'submitted DateTime value must be in timezone "Etc/Zulu"');
+    $this->setExpectedException(\LogicException::class, 'submitted DateTime value must be in timezone "Etc/Zulu"');
     $class->setSubmitted($incorrectValue);
   }
 
@@ -199,7 +199,7 @@ class MessageTest extends PHPUnit_Framework_TestCase {
     $class = new Message($this->recipients, $this->source);
     $class->setExpiration(new DateTime('+5 day', new DateTimeZone('Etc/Zulu')));
     $incorrectValue = new DateTime('+3 day', new DateTimeZone('Europe/Helsinki'));
-    $this->setExpectedException(LogicException::class, 'deadline DateTime value must be in timezone "Etc/Zulu"');
+    $this->setExpectedException(\LogicException::class, 'deadline DateTime value must be in timezone "Etc/Zulu"');
     $class->setDeadline($incorrectValue);
   }
 
@@ -210,7 +210,7 @@ class MessageTest extends PHPUnit_Framework_TestCase {
   public function testInvalidExpirationDateTimeBeforeSubmitted() {
     $class = new Message($this->recipients, $this->source);
     $newInvalidValue = new DateTime('-1 day', new DateTimeZone('Etc/Zulu'));
-    $this->setExpectedException(LogicException::class, 'Expiration can not be before submitted.');
+    $this->setExpectedException(\LogicException::class, 'Expiration can not be before submitted.');
     $class->setExpiration($newInvalidValue);
   }
 
@@ -225,7 +225,7 @@ class MessageTest extends PHPUnit_Framework_TestCase {
     $class->setDeadline(new DateTime('+2 day', new DateTimeZone('Etc/Zulu')));
 
     $newInvalidValue = new DateTime('+1 day', new DateTimeZone('Etc/Zulu'));
-    $this->setExpectedException(LogicException::class, 'Expiration can not be before deadline.');
+    $this->setExpectedException(\LogicException::class, 'Expiration can not be before deadline.');
     $class->setExpiration($newInvalidValue);
   }
 
@@ -236,7 +236,7 @@ class MessageTest extends PHPUnit_Framework_TestCase {
   public function testInvalidSubmittedDateTimeAfterExpiration() {
     $class = new Message($this->recipients, $this->source);
     $newInvalidValue = new DateTime('+1 day', new DateTimeZone('Etc/Zulu'));
-    $this->setExpectedException(LogicException::class, 'Submitted can not be after expiration.');
+    $this->setExpectedException(\LogicException::class, 'Submitted can not be after expiration.');
     $class->setSubmitted($newInvalidValue);
   }
 
@@ -247,7 +247,7 @@ class MessageTest extends PHPUnit_Framework_TestCase {
   public function testInvalidDeadlineDateTimeAfterExpiration() {
     $class = new Message($this->recipients, $this->source);
     $newInvalidValue = new DateTime('+1 day', new DateTimeZone('Etc/Zulu'));
-    $this->setExpectedException(LogicException::class, 'Deadline can not be after expiration.');
+    $this->setExpectedException(\LogicException::class, 'Deadline can not be after expiration.');
     $class->setDeadline($newInvalidValue);
   }
 

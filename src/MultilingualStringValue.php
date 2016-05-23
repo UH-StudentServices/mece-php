@@ -7,6 +7,8 @@
 
 namespace UniversityofHelsinki\MECE;
 
+use InvalidArgumentException;
+
 /**
  * Class MultilingualStringValue
  *

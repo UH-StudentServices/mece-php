@@ -5,16 +5,15 @@
  * @see README.md how to contribute to this project
  */
 
-require_once __DIR__ . '/../src/MultilingualStringValue.php';
-
 namespace UniversityofHelsinki\MECE\tests;
 
 use UniversityofHelsinki\MECE\MultilingualStringValue;
+use InvalidArgumentException;
 
 /**
  * @coversDefaultClass \UniversityofHelsinki\MECE\MultilingualStringValue
  */
-class MultilingualStringValueTest extends PHPUnit_Framework_TestCase {
+class MultilingualStringValueTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * @var MultilingualStringValue

@@ -7,6 +7,11 @@
 
 namespace UniversityofHelsinki\MECE;
 
+use DateTime;
+use DateTimeZone;
+use InvalidArgumentException;
+use LogicException;
+
 /**
  * Class Message
  *
@@ -146,7 +151,7 @@ class Message {
       'link',
       'avatarImageUrl',
     );
-    $export = new StdClass();
+    $export = new \StdClass();
     foreach ($properties as $property) {
 
       // Define getter method for property and ensure it exists
