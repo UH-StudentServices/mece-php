@@ -8,11 +8,11 @@
 namespace UniversityofHelsinki\MECE;
 
 /**
- * Class MECEMultilingualStringValue
+ * Class MultilingualStringValue
  *
  * Provides an class for containing multilingual strings.
  */
-class MECEMultilingualStringValue {
+class MultilingualStringValue {
 
   /**
    * @var array
@@ -25,7 +25,7 @@ class MECEMultilingualStringValue {
   private $values = array();
 
   /**
-   * Constructor of MECEMultilingualStringValue class. You may optionally pass
+   * Constructor of MultilingualStringValue class. You may optionally pass
    * options for the class.
    *
    * @param array $options

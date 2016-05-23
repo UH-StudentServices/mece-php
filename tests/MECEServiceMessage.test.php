@@ -5,12 +5,12 @@
  * @see README.md how to contribute to this project
  */
 
-require_once __DIR__ . '/../src/MECEMultilingualStringValue.php';
+require_once __DIR__ . '/../src/MultilingualStringValue.php';
 require_once __DIR__ . '/../src/MECEServiceMessage.php';
 
 namespace UniversityofHelsinki\MECE\tests;
 
-use UniversityofHelsinki\MECE\MECEMultilingualStringValue;
+use UniversityofHelsinki\MECE\MultilingualStringValue;
 use UniversityofHelsinki\MECE\MECEServiceMessage;
 
 /**
@@ -292,7 +292,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    */
   public function testSetGetHeading() {
     $class = new MECEServiceMessage($this->recipients, $this->source);
-    $newValue = new MECEMultilingualStringValue();
+    $newValue = new MultilingualStringValue();
     $newValue->setValue($this->getRandomString(), 'fi');
     $newValue->setValue($this->getRandomString(), 'en');
     $newValue->setValue($this->getRandomString(), 'sv');
@@ -307,7 +307,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    */
   public function testSetGetLinkText() {
     $class = new MECEServiceMessage($this->recipients, $this->source);
-    $newValue = new MECEMultilingualStringValue();
+    $newValue = new MultilingualStringValue();
     $newValue->setValue($this->getRandomString(), 'fi');
     $newValue->setValue($this->getRandomString(), 'en');
     $newValue->setValue($this->getRandomString(), 'sv');
@@ -322,7 +322,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    */
   public function testSetGetLink() {
     $class = new MECEServiceMessage($this->recipients, $this->source);
-    $newValue = new MECEMultilingualStringValue();
+    $newValue = new MultilingualStringValue();
     $newValue->setValue($this->getRandomString(), 'fi');
     $newValue->setValue($this->getRandomString(), 'en');
     $newValue->setValue($this->getRandomString(), 'sv');
@@ -337,7 +337,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    */
   public function testSetGetMessage() {
     $class = new MECEServiceMessage($this->recipients, $this->source);
-    $newValue = new MECEMultilingualStringValue();
+    $newValue = new MultilingualStringValue();
     $newValue->setValue($this->getRandomString(), 'fi');
     $newValue->setValue($this->getRandomString(), 'en');
     $newValue->setValue($this->getRandomString(), 'sv');
@@ -390,22 +390,22 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
     $class->setAvatarImageUrl('https://www.example.com/avatarXy.jpg');
 
     // Heading
-    $heading = new MECEMultilingualStringValue();
+    $heading = new MultilingualStringValue();
     $heading->setValues(array('fi' => 'Heading FI', 'en' => 'Heading EN', 'sv' => 'Heading SV'));
     $class->setHeading($heading);
 
     // Message
-    $message = new MECEMultilingualStringValue();
+    $message = new MultilingualStringValue();
     $message->setValues(array('fi' => 'Message FI', 'en' => 'Message EN', 'sv' => 'Message SV'));
     $class->setMessage($message);
 
     // LinkText
-    $linkText = new MECEMultilingualStringValue();
+    $linkText = new MultilingualStringValue();
     $linkText->setValues(array('fi' => 'LinkText FI', 'en' => 'LinkText EN', 'sv' => 'LinkText SV'));
     $class->setLinkText($linkText);
 
     // Link
-    $link = new MECEMultilingualStringValue();
+    $link = new MultilingualStringValue();
     $link->setValues(array('fi' => 'http://www.example.com/fi', 'en' => 'http://www.example.com/en', 'sv' => 'http://www.example.com/sv'));
     $class->setLink($link);
 

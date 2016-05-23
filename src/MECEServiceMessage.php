@@ -55,22 +55,22 @@ class MECEServiceMessage {
   private $sourceId = '';
 
   /**
-   * @var MECEMultilingualStringValue
+   * @var MultilingualStringValue
    */
   private $heading;
 
   /**
-   * @var MECEMultilingualStringValue
+   * @var MultilingualStringValue
    */
   private $message;
 
   /**
-   * @var MECEMultilingualStringValue
+   * @var MultilingualStringValue
    */
   private $linkText;
 
   /**
-   * @var MECEMultilingualStringValue
+   * @var MultilingualStringValue
    */
   private $link;
 
@@ -164,7 +164,7 @@ class MECEServiceMessage {
       elseif ($value instanceof DateTime) {
         $export->{$property} = $value->format('Y-m-d\TH:i:s\Z');
       }
-      elseif ($value instanceof MECEMultilingualStringValue) {
+      elseif ($value instanceof MultilingualStringValue) {
 
         // Loop each supported language and set it as multilingual value. Same
         // time try to specify the language neutral value that will be set after
@@ -346,16 +346,16 @@ class MECEServiceMessage {
 
   /**
    * Setter method for setting heading.
-   * @param MECEMultilingualStringValue $heading
+   * @param MultilingualStringValue $heading
    * @return void
    */
-  public function setHeading(MECEMultilingualStringValue $heading) {
+  public function setHeading(MultilingualStringValue $heading) {
     $this->heading = $heading;
   }
 
   /**
    * Getter method for getting heading.
-   * @return MECEMultilingualStringValue
+   * @return MultilingualStringValue
    */
   public function getHeading() {
     return $this->heading;
@@ -363,16 +363,16 @@ class MECEServiceMessage {
 
   /**
    * Setter method for setting message.
-   * @param MECEMultilingualStringValue $message
+   * @param MultilingualStringValue $message
    * @return void
    */
-  public function setMessage(MECEMultilingualStringValue $message) {
+  public function setMessage(MultilingualStringValue $message) {
     $this->message = $message;
   }
 
   /**
    * Getter method for getting message.
-   * @return MECEMultilingualStringValue
+   * @return MultilingualStringValue
    */
   public function getMessage() {
     return $this->message;
@@ -380,16 +380,16 @@ class MECEServiceMessage {
 
   /**
    * Setter method for setting link text.
-   * @param MECEMultilingualStringValue $linkText
+   * @param MultilingualStringValue $linkText
    * @return void
    */
-  public function setLinkText(MECEMultilingualStringValue $linkText) {
+  public function setLinkText(MultilingualStringValue $linkText) {
     $this->linkText = $linkText;
   }
 
   /**
    * Getter method for getting link text.
-   * @return MECEMultilingualStringValue
+   * @return MultilingualStringValue
    */
   public function getLinkText() {
     return $this->linkText;
@@ -397,16 +397,16 @@ class MECEServiceMessage {
 
   /**
    * Setter method for setting link.
-   * @param MECEMultilingualStringValue $link
+   * @param MultilingualStringValue $link
    * @return void
    */
-  public function setLink(MECEMultilingualStringValue $link) {
+  public function setLink(MultilingualStringValue $link) {
     $this->link = $link;
   }
 
   /**
    * Getter method for getting link.
-   * @return MECEMultilingualStringValue
+   * @return MultilingualStringValue
    */
   public function getLink() {
     return $this->link;

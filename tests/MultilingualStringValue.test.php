@@ -5,24 +5,24 @@
  * @see README.md how to contribute to this project
  */
 
-require_once __DIR__ . '/../src/MECEMultilingualStringValue.php';
+require_once __DIR__ . '/../src/MultilingualStringValue.php';
 
 namespace UniversityofHelsinki\MECE\tests;
 
-use UniversityofHelsinki\MECE\MECEMultilingualStringValue;
+use UniversityofHelsinki\MECE\MultilingualStringValue;
 
 /**
- * @coversDefaultClass \UniversityofHelsinki\MECE\MECEMultilingualStringValue
+ * @coversDefaultClass \UniversityofHelsinki\MECE\MultilingualStringValue
  */
-class MECEMultilingualStringValueTest extends PHPUnit_Framework_TestCase {
+class MultilingualStringValueTest extends PHPUnit_Framework_TestCase {
 
   /**
-   * @var MECEMultilingualStringValue
+   * @var MultilingualStringValue
    */
   private $class;
 
   public function setUp() {
-    $this->class = new MECEMultilingualStringValue();
+    $this->class = new MultilingualStringValue();
   }
 
   /**
@@ -32,11 +32,11 @@ class MECEMultilingualStringValueTest extends PHPUnit_Framework_TestCase {
   public function testConstruct() {
 
     // Assert default supported languages
-    $class = new MECEMultilingualStringValue();
+    $class = new MultilingualStringValue();
     $this->assertEquals(array('fi', 'en', 'sv'), $class->getSupportedLanguages());
 
     // Assert that given supported languages are set
-    $class = new MECEMultilingualStringValue(array('supportedLanguages' => array('ru')));
+    $class = new MultilingualStringValue(array('supportedLanguages' => array('ru')));
     $this->assertEquals(array('ru'), $class->getSupportedLanguages());
   }
 
