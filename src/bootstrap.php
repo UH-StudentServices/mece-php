@@ -5,5 +5,5 @@
  * @see README.md how to contribute to this project
  * @todo USE PROPER AUTOLOADER
  */
-require_once __DIR__ . '/src/Message.php';
-require_once __DIR__ . '/src/MultilingualStringValue.php';
+require_once __DIR__ . '/MECE/Message.php';
+require_once __DIR__ . '/MECE/MultilingualStringValue.php';

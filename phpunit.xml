@@ -1,7 +1,7 @@
-<phpunit bootstrap="./bootstrap.php">
+<phpunit bootstrap="./src/bootstrap.php">
   <testsuites>
     <testsuite name="MECE Test Suite">
-      <directory>tests</directory>
+      <directory>src/MECE/tests</directory>
     </testsuite>
   </testsuites>
 </phpunit>
