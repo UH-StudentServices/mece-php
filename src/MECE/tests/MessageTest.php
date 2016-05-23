@@ -16,18 +16,7 @@ use InvalidArgumentException;
  * @coversDefaultClass \UniversityofHelsinki\MECE\Message
  * @author Mikael Kundert <mikael.kundert@wunderkraut.com>
  */
-class MessageTest extends \PHPUnit_Framework_TestCase {
-
-  protected $recipients = array('user1', 'user2', 'user3', 'user4');
-  protected $source;
-
-  public function setUp() {
-    $this->source = $this->getRandomString();
-  }
-
-  protected function getRandomString() {
-    return md5(uniqid(time(), TRUE));
-  }
+class MessageTest extends MessageBaseTestCase {
 
   /**
    * Test recipients.
