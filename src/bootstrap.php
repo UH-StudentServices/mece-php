@@ -7,3 +7,4 @@
  */
 require_once __DIR__ . '/MECE/Message.php';
 require_once __DIR__ . '/MECE/MultilingualStringValue.php';
+require_once __DIR__ . '/MECE/Notification.php';
