@@ -8,12 +8,12 @@
 namespace UniversityofHelsinki\MECE;
 
 /**
- * Class MECEServiceMessage
+ * Class Message
  *
  * Provides an class for setting and dumping the message that is designed to be
  * sent to MECE Service.
  */
-class MECEServiceMessage {
+class Message {
 
   /*
    * Following list of properties are part of the service message.
@@ -94,7 +94,7 @@ class MECEServiceMessage {
   private $requiredTimeZone;
 
   /**
-   * Class constructor for MECEServiceMessage.
+   * Class constructor for Message.
    * @param array $recipients
    * @param string $source
    * @param array $options

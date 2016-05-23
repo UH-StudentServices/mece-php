@@ -6,19 +6,19 @@
  */
 
 require_once __DIR__ . '/../src/MultilingualStringValue.php';
-require_once __DIR__ . '/../src/MECEServiceMessage.php';
+require_once __DIR__ . '/../src/Message.php';
 
 namespace UniversityofHelsinki\MECE\tests;
 
 use UniversityofHelsinki\MECE\MultilingualStringValue;
-use UniversityofHelsinki\MECE\MECEServiceMessage;
+use UniversityofHelsinki\MECE\Message;
 
 /**
- * Class MECEServiceMessageTest
+ * Class MessageTest
  *
- * @coversDefaultClass \UniversityofHelsinki\MECE\MECEServiceMessage
+ * @coversDefaultClass \UniversityofHelsinki\MECE\Message
  */
-class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
+class MessageTest extends PHPUnit_Framework_TestCase {
 
   private $recipients = array('user1', 'user2', 'user3', 'user4');
   private $source;
@@ -40,7 +40,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
   public function testRecipients() {
 
     // Test recipients on construct
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $this->assertEquals($this->recipients, $class->getRecipients());
 
     // Test recipients set directly
@@ -60,7 +60,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    */
   public function testRecipientsInvalidArgumentException() {
     $this->setExpectedException(InvalidArgumentException::class, 'Recipient argument must be string.');
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $class->appendRecipient(TRUE);
   }
 
@@ -70,7 +70,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    */
   public function testSourceMustBeString() {
     $this->setExpectedException(InvalidArgumentException::class, 'Source must be an string.');
-    new MECEServiceMessage($this->recipients, TRUE);
+    new Message($this->recipients, TRUE);
   }
 
   /**
@@ -81,7 +81,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
   public function testSource() {
 
     // Test that source gets set from constructor
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $this->assertEquals($this->source, $class->getSource());
 
     // Test that it can be set also directly
@@ -102,7 +102,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    */
   public function testPriorityException() {
     $this->setExpectedException(InvalidArgumentException::class, "Given value type 'boolean' for 'priority' property is not a string.");
-    new MECEServiceMessage($this->recipients, $this->source, array('priority' => TRUE));
+    new Message($this->recipients, $this->source, array('priority' => TRUE));
   }
 
   /**
@@ -115,12 +115,12 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
     $priority = $this->getRandomString();
 
     // Test that priority gets set through constructor
-    $class = new MECEServiceMessage($this->recipients, $this->source, array('priority' => $priority));
+    $class = new Message($this->recipients, $this->source, array('priority' => $priority));
     $this->assertEquals($priority, $class->getPriority());
 
     // Test that priority gets set and get properly
     $default_priority = '1';
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $this->assertEquals($default_priority, $class->getPriority());
     $class->setPriority($priority);
     $this->assertEquals($priority, $class->getPriority());
@@ -135,7 +135,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    */
   public function testDefaultDateTimeValues() {
     $defaultValue = new DateTime('now', new DateTimeZone('Etc/Zulu'));
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $this->assertEquals($defaultValue, $class->getExpiration());
     $this->assertEquals($defaultValue, $class->getDeadline());
     $this->assertEquals($defaultValue, $class->getSubmitted());
@@ -151,7 +151,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    * @covers ::getSubmitted
    */
   public function testSetGetDateProperties() {
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
 
     // Test setting expiration
     $newValue = new DateTime('+5 day', new DateTimeZone('Etc/Zulu'));
@@ -174,7 +174,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    * @covers ::setExpiration
    */
   public function testExpirationInvalidTimeZone() {
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $incorrectValue = new DateTime('+5 day', new DateTimeZone('Europe/Helsinki'));
     $this->setExpectedException(LogicException::class, 'expiration DateTime value must be in timezone "Etc/Zulu"');
     $class->setExpiration($incorrectValue);
@@ -185,7 +185,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    * @covers ::setSubmitted
    */
   public function testSubmittedInvalidTimeZone() {
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $incorrectValue = new DateTime('-1 day', new DateTimeZone('Europe/Helsinki'));
     $this->setExpectedException(LogicException::class, 'submitted DateTime value must be in timezone "Etc/Zulu"');
     $class->setSubmitted($incorrectValue);
@@ -196,7 +196,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    * @covers ::setDeadline
    */
   public function testDeadlineInvalidTimeZone() {
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $class->setExpiration(new DateTime('+5 day', new DateTimeZone('Etc/Zulu')));
     $incorrectValue = new DateTime('+3 day', new DateTimeZone('Europe/Helsinki'));
     $this->setExpectedException(LogicException::class, 'deadline DateTime value must be in timezone "Etc/Zulu"');
@@ -208,7 +208,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    * @covers ::setExpiration
    */
   public function testInvalidExpirationDateTimeBeforeSubmitted() {
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $newInvalidValue = new DateTime('-1 day', new DateTimeZone('Etc/Zulu'));
     $this->setExpectedException(LogicException::class, 'Expiration can not be before submitted.');
     $class->setExpiration($newInvalidValue);
@@ -220,7 +220,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    * @covers ::setDeadline
    */
   public function testInvalidExpirationDateTimeBeforeDeadline() {
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $class->setExpiration(new DateTime('+3 day', new DateTimeZone('Etc/Zulu')));
     $class->setDeadline(new DateTime('+2 day', new DateTimeZone('Etc/Zulu')));
 
@@ -234,7 +234,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    * @covers ::setSubmitted
    */
   public function testInvalidSubmittedDateTimeAfterExpiration() {
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $newInvalidValue = new DateTime('+1 day', new DateTimeZone('Etc/Zulu'));
     $this->setExpectedException(LogicException::class, 'Submitted can not be after expiration.');
     $class->setSubmitted($newInvalidValue);
@@ -245,7 +245,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    * @covers ::setDeadline
    */
   public function testInvalidDeadlineDateTimeAfterExpiration() {
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $newInvalidValue = new DateTime('+1 day', new DateTimeZone('Etc/Zulu'));
     $this->setExpectedException(LogicException::class, 'Deadline can not be after expiration.');
     $class->setDeadline($newInvalidValue);
@@ -257,7 +257,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    * @covers ::getDeadline
    */
   public function testValidDeadlineDateTimeBeforeSubmitted() {
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $newValue = new DateTime('-1 day', new DateTimeZone('Etc/Zulu'));
     $class->setDeadline($newValue);
     $this->assertEquals($newValue, $class->getDeadline());
@@ -269,7 +269,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    * @covers ::getSourceId
    */
   public function testSetGetSourceId() {
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $newValue = $this->getRandomString();
     $class->setSourceId($newValue);
     $this->assertEquals($newValue, $class->getSourceId());
@@ -280,7 +280,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    * @covers ::setSourceId
    */
   public function testInvalidSourceId() {
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $this->setExpectedException(InvalidArgumentException::class, "Given value type 'boolean' for 'sourceId' property is not a string.");
     $class->setSourceId(TRUE);
   }
@@ -291,7 +291,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    * @covers ::getHeading
    */
   public function testSetGetHeading() {
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $newValue = new MultilingualStringValue();
     $newValue->setValue($this->getRandomString(), 'fi');
     $newValue->setValue($this->getRandomString(), 'en');
@@ -306,7 +306,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    * @covers ::getLinkText
    */
   public function testSetGetLinkText() {
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $newValue = new MultilingualStringValue();
     $newValue->setValue($this->getRandomString(), 'fi');
     $newValue->setValue($this->getRandomString(), 'en');
@@ -321,7 +321,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    * @covers ::getLink
    */
   public function testSetGetLink() {
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $newValue = new MultilingualStringValue();
     $newValue->setValue($this->getRandomString(), 'fi');
     $newValue->setValue($this->getRandomString(), 'en');
@@ -336,7 +336,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    * @covers ::getMessage
    */
   public function testSetGetMessage() {
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $newValue = new MultilingualStringValue();
     $newValue->setValue($this->getRandomString(), 'fi');
     $newValue->setValue($this->getRandomString(), 'en');
@@ -351,7 +351,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    * @covers ::getAvatarImageUrl
    */
   public function testSetGetAvatarImageUrl() {
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $newValue = $this->getRandomString();
     $class->setAvatarImageUrl($newValue);
     $this->assertEquals($newValue, $class->getAvatarImageUrl());
@@ -362,7 +362,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    * @covers ::setAvatarImageUrl
    */
   public function testInvalidAvatarImageUrl() {
-    $class = new MECEServiceMessage($this->recipients, $this->source);
+    $class = new Message($this->recipients, $this->source);
     $this->setExpectedException(InvalidArgumentException::class, "Given value type 'boolean' for 'avatarImageUrl' property is not a string.");
     $class->setAvatarImageUrl(TRUE);
   }
@@ -381,7 +381,7 @@ class MECEServiceMessageTest extends PHPUnit_Framework_TestCase {
    * @covers ::export
    */
   public function testExport() {
-    $class = new MECEServiceMessage($this->recipients, 'John Doe');
+    $class = new Message($this->recipients, 'John Doe');
     $defaultTimezone = new DateTimeZone('Etc/Zulu');
     $class->setSubmitted(new DateTime('2016-01-24 11:00', $defaultTimezone));
     $class->setDeadline(new DateTime('2016-01-24 13:00', $defaultTimezone));
