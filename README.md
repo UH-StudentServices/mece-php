@@ -7,12 +7,12 @@ License: [GPLv3](LICENSE.txt)
 ## Usage with Guzzle
 
 ```php
-use UniversityofHelsinki\MECE\Message;
+use UniversityofHelsinki\MECE\Notification;
 use GuzzleHttp\Client;
 
 $recipients = ['matti', 'liisa'];
 $source = 'serviceXY';
-$message = new Message($recipients, $source);
+$message = new Notification($recipients, $source);
 
 $client = new Client();
 $host = 'https://www.example.com';
