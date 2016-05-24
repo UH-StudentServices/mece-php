@@ -4,6 +4,8 @@ maintained by Center for Information Technology (University of Helsinki).
 
 License: [GPLv3](LICENSE.txt)
 
+**Note: This branch is in active development and is not yet stable. Use with caution or wait for first release.**
+
 ## Usage with Guzzle
 
 ```php
