@@ -10,11 +10,19 @@ License: [GPLv3](LICENSE.txt)
 
 ```php
 use UniversityofHelsinki\MECE\NotificationMessage;
+use UniversityofHelsinki\MECE\MultilingualStringValue;
 use GuzzleHttp\Client;
 
 $recipients = ['matti', 'liisa'];
 $source = 'serviceXY';
 $message = new NotificationMessage($recipients, $source);
+
+// Set heading for all three default languages
+$heading = new MultilingualStringValue();
+$heading->setValue('Viesti', 'fi');
+$heading->setValue('Message', 'en');
+$heading->setValue('Meddelande', 'sv');
+$message->setHeading($heading);
 
 $client = new Client();
 $host = 'https://www.example.com';
