@@ -5,7 +5,6 @@
   "keywords": ["messaging", "mece", "university"],
   "homepage": "http://www.helsinki.fi",
   "license": "GPLv3",
-  "version": "1.0.0-dev",
   "authors": [
     {
       "name": "Mikael Kundert",

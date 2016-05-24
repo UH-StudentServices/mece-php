@@ -21,6 +21,6 @@ trait VersionTrait {
    * @return string
    */
   function getVersion() {
-    return '1.0.0-dev';
+    return '1.0.0';
   }
 }
