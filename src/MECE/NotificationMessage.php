@@ -13,7 +13,7 @@ use InvalidArgumentException;
 use LogicException;
 
 
-class Notification extends Message {
+class NotificationMessage extends Message {
 
   /**
    * @var DateTime

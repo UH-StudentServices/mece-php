@@ -8,7 +8,7 @@
 namespace UniversityofHelsinki\MECE\tests;
 
 use UniversityofHelsinki\MECE\MultilingualStringValue;
-use UniversityofHelsinki\MECE\Notification;
+use UniversityofHelsinki\MECE\NotificationMessage;
 use DateTime;
 use DateTimeZone;
 use InvalidArgumentException;
@@ -17,10 +17,10 @@ use LogicException;
 /**
  * Class MessageTest
  *
- * @coversDefaultClass \UniversityofHelsinki\MECE\Notification
+ * @coversDefaultClass \UniversityofHelsinki\MECE\NotificationMessage
  * @author Mikael Kundert <mikael.kundert@wunderkraut.com>
  */
-class NotificationTest extends MessageBaseTestCase {
+class NotificationMessageTest extends MessageBaseTestCase {
 
   /**
    * Test default datetime values.
@@ -31,7 +31,7 @@ class NotificationTest extends MessageBaseTestCase {
    */
   public function testDefaultDateTimeValues() {
     $defaultValue = new DateTime('now', new DateTimeZone('Etc/Zulu'));
-    $class = new Notification($this->recipients, $this->source);
+    $class = new NotificationMessage($this->recipients, $this->source);
     $this->assertEquals($defaultValue, $class->getExpiration());
     $this->assertEquals($defaultValue, $class->getDeadline());
     $this->assertEquals($defaultValue, $class->getSubmitted());
@@ -47,7 +47,7 @@ class NotificationTest extends MessageBaseTestCase {
    * @covers ::getSubmitted
    */
   public function testSetGetDateProperties() {
-    $class = new Notification($this->recipients, $this->source);
+    $class = new NotificationMessage($this->recipients, $this->source);
 
     // Test setting expiration
     $newValue = new DateTime('+5 day', new DateTimeZone('Etc/Zulu'));
@@ -70,7 +70,7 @@ class NotificationTest extends MessageBaseTestCase {
    * @covers ::setExpiration
    */
   public function testExpirationInvalidTimeZone() {
-    $class = new Notification($this->recipients, $this->source);
+    $class = new NotificationMessage($this->recipients, $this->source);
     $incorrectValue = new DateTime('+5 day', new DateTimeZone('Europe/Helsinki'));
     $this->setExpectedException(LogicException::class, 'expiration DateTime value must be in timezone "Etc/Zulu"');
     $class->setExpiration($incorrectValue);
@@ -81,7 +81,7 @@ class NotificationTest extends MessageBaseTestCase {
    * @covers ::setSubmitted
    */
   public function testSubmittedInvalidTimeZone() {
-    $class = new Notification($this->recipients, $this->source);
+    $class = new NotificationMessage($this->recipients, $this->source);
     $incorrectValue = new DateTime('-1 day', new DateTimeZone('Europe/Helsinki'));
     $this->setExpectedException(LogicException::class, 'submitted DateTime value must be in timezone "Etc/Zulu"');
     $class->setSubmitted($incorrectValue);
@@ -92,7 +92,7 @@ class NotificationTest extends MessageBaseTestCase {
    * @covers ::setDeadline
    */
   public function testDeadlineInvalidTimeZone() {
-    $class = new Notification($this->recipients, $this->source);
+    $class = new NotificationMessage($this->recipients, $this->source);
     $class->setExpiration(new DateTime('+5 day', new DateTimeZone('Etc/Zulu')));
     $incorrectValue = new DateTime('+3 day', new DateTimeZone('Europe/Helsinki'));
     $this->setExpectedException(LogicException::class, 'deadline DateTime value must be in timezone "Etc/Zulu"');
@@ -104,7 +104,7 @@ class NotificationTest extends MessageBaseTestCase {
    * @covers ::setExpiration
    */
   public function testInvalidExpirationDateTimeBeforeSubmitted() {
-    $class = new Notification($this->recipients, $this->source);
+    $class = new NotificationMessage($this->recipients, $this->source);
     $newInvalidValue = new DateTime('-1 day', new DateTimeZone('Etc/Zulu'));
     $this->setExpectedException(LogicException::class, 'Expiration can not be before submitted.');
     $class->setExpiration($newInvalidValue);
@@ -116,7 +116,7 @@ class NotificationTest extends MessageBaseTestCase {
    * @covers ::setDeadline
    */
   public function testInvalidExpirationDateTimeBeforeDeadline() {
-    $class = new Notification($this->recipients, $this->source);
+    $class = new NotificationMessage($this->recipients, $this->source);
     $class->setExpiration(new DateTime('+3 day', new DateTimeZone('Etc/Zulu')));
     $class->setDeadline(new DateTime('+2 day', new DateTimeZone('Etc/Zulu')));
 
@@ -130,7 +130,7 @@ class NotificationTest extends MessageBaseTestCase {
    * @covers ::setSubmitted
    */
   public function testInvalidSubmittedDateTimeAfterExpiration() {
-    $class = new Notification($this->recipients, $this->source);
+    $class = new NotificationMessage($this->recipients, $this->source);
     $newInvalidValue = new DateTime('+1 day', new DateTimeZone('Etc/Zulu'));
     $this->setExpectedException(LogicException::class, 'Submitted can not be after expiration.');
     $class->setSubmitted($newInvalidValue);
@@ -141,7 +141,7 @@ class NotificationTest extends MessageBaseTestCase {
    * @covers ::setDeadline
    */
   public function testInvalidDeadlineDateTimeAfterExpiration() {
-    $class = new Notification($this->recipients, $this->source);
+    $class = new NotificationMessage($this->recipients, $this->source);
     $newInvalidValue = new DateTime('+1 day', new DateTimeZone('Etc/Zulu'));
     $this->setExpectedException(LogicException::class, 'Deadline can not be after expiration.');
     $class->setDeadline($newInvalidValue);
@@ -153,7 +153,7 @@ class NotificationTest extends MessageBaseTestCase {
    * @covers ::getDeadline
    */
   public function testValidDeadlineDateTimeBeforeSubmitted() {
-    $class = new Notification($this->recipients, $this->source);
+    $class = new NotificationMessage($this->recipients, $this->source);
     $newValue = new DateTime('-1 day', new DateTimeZone('Etc/Zulu'));
     $class->setDeadline($newValue);
     $this->assertEquals($newValue, $class->getDeadline());
@@ -165,7 +165,7 @@ class NotificationTest extends MessageBaseTestCase {
    * @covers ::getHeading
    */
   public function testSetGetHeading() {
-    $class = new Notification($this->recipients, $this->source);
+    $class = new NotificationMessage($this->recipients, $this->source);
     $newValue = new MultilingualStringValue();
     $newValue->setValue($this->getRandomString(), 'fi');
     $newValue->setValue($this->getRandomString(), 'en');
@@ -180,7 +180,7 @@ class NotificationTest extends MessageBaseTestCase {
    * @covers ::getLinkText
    */
   public function testSetGetLinkText() {
-    $class = new Notification($this->recipients, $this->source);
+    $class = new NotificationMessage($this->recipients, $this->source);
     $newValue = new MultilingualStringValue();
     $newValue->setValue($this->getRandomString(), 'fi');
     $newValue->setValue($this->getRandomString(), 'en');
@@ -195,7 +195,7 @@ class NotificationTest extends MessageBaseTestCase {
    * @covers ::getLink
    */
   public function testSetGetLink() {
-    $class = new Notification($this->recipients, $this->source);
+    $class = new NotificationMessage($this->recipients, $this->source);
     $newValue = new MultilingualStringValue();
     $newValue->setValue($this->getRandomString(), 'fi');
     $newValue->setValue($this->getRandomString(), 'en');
@@ -210,7 +210,7 @@ class NotificationTest extends MessageBaseTestCase {
    * @covers ::getMessage
    */
   public function testSetGetMessage() {
-    $class = new Notification($this->recipients, $this->source);
+    $class = new NotificationMessage($this->recipients, $this->source);
     $newValue = new MultilingualStringValue();
     $newValue->setValue($this->getRandomString(), 'fi');
     $newValue->setValue($this->getRandomString(), 'en');
@@ -225,7 +225,7 @@ class NotificationTest extends MessageBaseTestCase {
    * @covers ::getAvatarImageUrl
    */
   public function testSetGetAvatarImageUrl() {
-    $class = new Notification($this->recipients, $this->source);
+    $class = new NotificationMessage($this->recipients, $this->source);
     $newValue = $this->getRandomString();
     $class->setAvatarImageUrl($newValue);
     $this->assertEquals($newValue, $class->getAvatarImageUrl());
@@ -236,7 +236,7 @@ class NotificationTest extends MessageBaseTestCase {
    * @covers ::setAvatarImageUrl
    */
   public function testInvalidAvatarImageUrl() {
-    $class = new Notification($this->recipients, $this->source);
+    $class = new NotificationMessage($this->recipients, $this->source);
     $this->setExpectedException(InvalidArgumentException::class, "Given value type 'boolean' for 'avatarImageUrl' property is not a string.");
     $class->setAvatarImageUrl(TRUE);
   }
@@ -255,7 +255,7 @@ class NotificationTest extends MessageBaseTestCase {
    * @covers ::export
    */
   public function testExport() {
-    $class = new Notification($this->recipients, 'John Doe');
+    $class = new NotificationMessage($this->recipients, 'John Doe');
     $defaultTimezone = new DateTimeZone('Etc/Zulu');
     $class->setSubmitted(new DateTime('2016-01-24 11:00', $defaultTimezone));
     $class->setDeadline(new DateTime('2016-01-24 13:00', $defaultTimezone));
