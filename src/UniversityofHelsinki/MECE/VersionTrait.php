@@ -9,6 +9,7 @@ namespace UniversityofHelsinki\MECE;
 
 /**
  * Class VersionTrait
+ * @package UniversityofHelsinki\MECE
  *
  * Simple trait that can be used accross all library classes.
  *

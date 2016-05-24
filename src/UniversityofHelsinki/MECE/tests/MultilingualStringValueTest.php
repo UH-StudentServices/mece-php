@@ -12,6 +12,7 @@ use InvalidArgumentException;
 use PHPUnit_Framework_TestCase;
 
 /**
+ * @package UniversityofHelsinki\MECE\tests
  * @coversDefaultClass \UniversityofHelsinki\MECE\MultilingualStringValue
  * @author Mikael Kundert <mikael.kundert@wunderkraut.com>
  */

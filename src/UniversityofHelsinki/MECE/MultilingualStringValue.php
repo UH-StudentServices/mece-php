@@ -11,6 +11,7 @@ use InvalidArgumentException;
 
 /**
  * Class MultilingualStringValue
+ * @package UniversityofHelsinki\MECE
  *
  * Provides an class for containing multilingual strings.
  *

@@ -10,6 +10,7 @@ namespace UniversityofHelsinki\MECE\tests;
 
 /**
  * Class MessageBaseTestCase
+ * @package UniversityofHelsinki\MECE\tests
  * @author Mikael Kundert <mikael.kundert@wunderkraut.com>
  */
 class MessageBaseTestCase extends \PHPUnit_Framework_TestCase {

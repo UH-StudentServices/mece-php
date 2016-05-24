@@ -14,6 +14,7 @@ use LogicException;
 
 /**
  * Class NotificationMessage
+ * @package UniversityofHelsinki\MECE
  *
  * Extends basic message class an represents an notification message.
  *

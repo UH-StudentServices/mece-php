@@ -14,6 +14,7 @@ use UniversityofHelsinki\MECE\NotificationMessage;
 
 /**
  * Class VersionTraitTest
+ * @package UniversityofHelsinki\MECE\tests
  * @author Mikael Kundert <mikael.kundert@wunderkraut.com>
  */
 class VersionTraitTest extends PHPUnit_Framework_TestCase {

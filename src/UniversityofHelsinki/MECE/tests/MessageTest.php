@@ -12,6 +12,7 @@ use InvalidArgumentException;
 
 /**
  * Class MessageTest
+ * @package UniversityofHelsinki\MECE\tests
  *
  * @coversDefaultClass \UniversityofHelsinki\MECE\Message
  * @author Mikael Kundert <mikael.kundert@wunderkraut.com>

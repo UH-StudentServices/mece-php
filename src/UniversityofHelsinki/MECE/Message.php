@@ -12,6 +12,7 @@ use LogicException;
 
 /**
  * Class Message
+ * @package UniversityofHelsinki\MECE
  *
  * Provides an class for setting and dumping the message that is designed to be
  * sent to MECE Service.

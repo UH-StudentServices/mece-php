@@ -16,6 +16,7 @@ use LogicException;
 
 /**
  * Class MessageTest
+ * @package UniversityofHelsinki\MECE\tests
  *
  * @coversDefaultClass \UniversityofHelsinki\MECE\NotificationMessage
  * @author Mikael Kundert <mikael.kundert@wunderkraut.com>
