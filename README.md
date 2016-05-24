@@ -4,6 +4,14 @@ maintained by Center for Information Technology (University of Helsinki).
 
 License: [GPLv3](LICENSE.txt)
 
+## Installation
+
+Install composer
+``curl -sS https://getcomposer.org/installer | php``
+
+Get package to your directory
+``php composer.phar require universityofhelsinki/mece:v1.0.0``
+
 ## Usage with Guzzle
 
 ```php
