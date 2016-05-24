@@ -289,4 +289,24 @@ class NotificationMessageTest extends MessageBaseTestCase {
     $this->assertEquals($expectedJSON, $class->export());
   }
 
+  /**
+   * Export should be able to export minimal JSON formatted object.
+   * @group issue1
+   * @covers ::setSubmitted
+   * @covers ::setDeadline
+   * @covers ::setExpiration
+   * @covers ::export
+   */
+  public function testExportMinimal() {
+    $class = new NotificationMessage($this->recipients, 'John Doe');
+    $defaultTimezone = new DateTimeZone('Etc/Zulu');
+    $class->setSubmitted(new DateTime('2016-01-24 11:00', $defaultTimezone));
+    $class->setDeadline(new DateTime('2016-01-24 13:00', $defaultTimezone));
+    $class->setExpiration(new DateTime('2016-01-24 15:00', $defaultTimezone));
+
+    // Now finally assert
+    $expectedJSON = '{"recipients":["user1","user2","user3","user4"],"priority":"1","deadline":"2016-01-24T13:00:00Z","expiration":"2016-01-24T15:00:00Z","submitted":"2016-01-24T11:00:00Z","source":"John Doe"}';
+    $this->assertEquals($expectedJSON, $class->export());
+  }
+
 }

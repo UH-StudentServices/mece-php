@@ -267,36 +267,38 @@ class NotificationMessage extends Message {
       }
 
       // Call the getter method and set the value to $export in certain way that
-      // depends what type it is.
+      // depends what type it is, but only if it's not empty.
       $value = $this->$getterMethod();
-      if (is_string($value) || is_array($value)) {
-        $export->{$property} = $value;
-      }
-      elseif ($value instanceof DateTime) {
-        $export->{$property} = $value->format('Y-m-d\TH:i:s\Z');
-      }
-      elseif ($value instanceof MultilingualStringValue) {
-
-        // Loop each supported language and set it as multilingual value. Same
-        // time try to specify the language neutral value that will be set after
-        // the loop.
-        $languageNeutralValue = '';
-        foreach ($this->supportedLanguages as $language) {
-
-          // Set multilingual value
-          $multilingualValue = $value->getValue($language);
-          $multilingualProperty = $property . strtoupper($language);
-          $export->{$multilingualProperty} = $multilingualValue;
-
-          // This should get the first non-empty value.
-          if (empty($languageNeutralValue)) {
-            $languageNeutralValue = $multilingualValue;
-          }
+      if (!empty($value)) {
+        if (is_string($value) || is_array($value)) {
+          $export->{$property} = $value;
         }
+        elseif ($value instanceof DateTime) {
+          $export->{$property} = $value->format('Y-m-d\TH:i:s\Z');
+        }
+        elseif ($value instanceof MultilingualStringValue) {
 
-        // Set the language neutral value too
-        $export->{$property} = $languageNeutralValue;
+          // Loop each supported language and set it as multilingual value. Same
+          // time try to specify the language neutral value that will be set after
+          // the loop.
+          $languageNeutralValue = '';
+          foreach ($this->supportedLanguages as $language) {
 
+            // Set multilingual value
+            $multilingualValue = $value->getValue($language);
+            $multilingualProperty = $property . strtoupper($language);
+            $export->{$multilingualProperty} = $multilingualValue;
+
+            // This should get the first non-empty value.
+            if (empty($languageNeutralValue)) {
+              $languageNeutralValue = $multilingualValue;
+            }
+          }
+
+          // Set the language neutral value too
+          $export->{$property} = $languageNeutralValue;
+
+        }
       }
     }
     return json_encode($export);
