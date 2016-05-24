@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "91fcf7f1cf86be236f6b011173db086e",
-    "content-hash": "1d675ad39509dc37095efec1bc315fa7",
+    "hash": "3b4c06f4ae14ed5a6813ccce707aca24",
+    "content-hash": "ad713df8ba5a9fcaf79bf113763c99e6",
     "packages": [],
     "packages-dev": [
         {
@@ -43,7 +43,6 @@
                     "Doctrine\\Instantiator\\": "src/Doctrine/Instantiator/"
                 }
             },
-            "NotificationMessage-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -99,7 +98,6 @@
                     ]
                 }
             },
-            "NotificationMessage-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -146,7 +144,6 @@
                     "Prophecy\\": "src/"
                 }
             },
-            "NotificationMessage-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -215,7 +212,6 @@
                     "src/"
                 ]
             },
-            "NotificationMessage-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -263,7 +259,6 @@
                     "src/"
                 ]
             },
-            "NotificationMessage-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -305,7 +300,6 @@
                     "src/"
                 ]
             },
-            "NotificationMessage-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -349,7 +343,6 @@
                     "src/"
                 ]
             },
-            "NotificationMessage-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -399,7 +392,6 @@
                     "src/"
                 ]
             },
-            "NotificationMessage-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -468,7 +460,6 @@
                     "src/"
                 ]
             },
-            "NotificationMessage-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -525,7 +516,6 @@
                     "src/"
                 ]
             },
-            "NotificationMessage-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -577,7 +567,6 @@
                     "src/"
                 ]
             },
-            "NotificationMessage-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -639,7 +628,6 @@
                     "src/"
                 ]
             },
-            "NotificationMessage-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -691,7 +679,6 @@
                     "src/"
                 ]
             },
-            "NotificationMessage-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -742,7 +729,6 @@
                     "src/"
                 ]
             },
-            "NotificationMessage-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -810,7 +796,6 @@
                     "src/"
                 ]
             },
-            "NotificationMessage-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -858,7 +843,6 @@
                     "src/"
                 ]
             },
-            "NotificationMessage-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -900,7 +884,6 @@
                     "src/"
                 ]
             },
-            "NotificationMessage-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -946,7 +929,6 @@
                     "/Tests/"
                 ]
             },
-            "NotificationMessage-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],

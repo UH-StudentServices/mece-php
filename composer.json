@@ -19,6 +19,6 @@
     "phpunit/phpunit": ">=4.8.0"
   },
   "autoload": {
-    "psr-4": { "UniversityofHelsinki\\": "src/" }
+    "psr-4": { "UniversityofHelsinki\\MECE\\": "src/UniversityofHelsinki/MECE" }
   }
 }
