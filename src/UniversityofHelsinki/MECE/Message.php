@@ -27,7 +27,7 @@ class Message {
   /**
    * @var array
    */
-  protected $recipients = array();
+  protected $recipients = [];
 
   /**
    * @var string
@@ -51,7 +51,7 @@ class Message {
   /**
    * @var array
    */
-  protected $supportedLanguages = array();
+  protected $supportedLanguages = [];
 
   /**
    * Class constructor for Message.
@@ -62,7 +62,7 @@ class Message {
    *   'supportedLanguages': List of languages to support. Optional (default:
    *                         'fi', 'en', 'sv')
    */
-  public function __construct(array $recipients, $source, array $options = array()) {
+  public function __construct(array $recipients, $source, array $options = []) {
 
     // Set recipients
     $this->setRecipients($recipients);
@@ -76,7 +76,7 @@ class Message {
     // Priority and supported langauges can be set from options.
     $options['priority'] = !empty($options['priority']) ? $options['priority'] : '1';
     $this->setPriority($options['priority']);
-    $options['supportedLanguages'] = (isset($options['supportedLanguages']) && is_array($options['supportedLanguages'])) ? $options['supportedLanguages'] : array('fi', 'en', 'sv');
+    $options['supportedLanguages'] = (isset($options['supportedLanguages']) && is_array($options['supportedLanguages'])) ? $options['supportedLanguages'] : ['fi', 'en', 'sv'];
     $this->supportedLanguages = $options['supportedLanguages'];
 
   }

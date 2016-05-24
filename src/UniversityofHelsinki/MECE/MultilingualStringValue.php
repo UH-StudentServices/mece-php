@@ -21,12 +21,12 @@ class MultilingualStringValue {
   /**
    * @var array
    */
-  private $supportedLanguages = array();
+  private $supportedLanguages = [];
 
   /**
    * @var array
    */
-  private $values = array();
+  private $values = [];
 
   /**
    * Constructor of MultilingualStringValue class. You may optionally pass
@@ -36,11 +36,11 @@ class MultilingualStringValue {
    *   'supportedLanguages': List of supported langauges. If not given, then
    *                         constructor will set default values for you.
    */
-  public function __construct(array $options = array()) {
+  public function __construct(array $options = []) {
 
     // Set supported languages
     if (!isset($options['supportedLanguages'])) {
-      $options['supportedLanguages'] = array('fi', 'en', 'sv');
+      $options['supportedLanguages'] = ['fi', 'en', 'sv'];
     }
     $this->setSupportedLanguages($options['supportedLanguages']);
   }

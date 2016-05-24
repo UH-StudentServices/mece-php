@@ -265,22 +265,22 @@ class NotificationMessageTest extends MessageBaseTestCase {
 
     // Heading
     $heading = new MultilingualStringValue();
-    $heading->setValues(array('fi' => 'Heading FI', 'en' => 'Heading EN', 'sv' => 'Heading SV'));
+    $heading->setValues(['fi' => 'Heading FI', 'en' => 'Heading EN', 'sv' => 'Heading SV']);
     $class->setHeading($heading);
 
     // Message
     $message = new MultilingualStringValue();
-    $message->setValues(array('fi' => 'Message FI', 'en' => 'Message EN', 'sv' => 'Message SV'));
+    $message->setValues(['fi' => 'Message FI', 'en' => 'Message EN', 'sv' => 'Message SV']);
     $class->setMessage($message);
 
     // LinkText
     $linkText = new MultilingualStringValue();
-    $linkText->setValues(array('fi' => 'LinkText FI', 'en' => 'LinkText EN', 'sv' => 'LinkText SV'));
+    $linkText->setValues(['fi' => 'LinkText FI', 'en' => 'LinkText EN', 'sv' => 'LinkText SV']);
     $class->setLinkText($linkText);
 
     // Link
     $link = new MultilingualStringValue();
-    $link->setValues(array('fi' => 'http://www.example.com/fi', 'en' => 'http://www.example.com/en', 'sv' => 'http://www.example.com/sv'));
+    $link->setValues(['fi' => 'http://www.example.com/fi', 'en' => 'http://www.example.com/en', 'sv' => 'http://www.example.com/sv']);
     $class->setLink($link);
 
     // Now finally assert

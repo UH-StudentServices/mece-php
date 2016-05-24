@@ -31,14 +31,14 @@ class MessageTest extends MessageBaseTestCase {
     $this->assertEquals($this->recipients, $class->getRecipients());
 
     // Test recipients set directly
-    $new_recipients = array('user5', 'user6');
+    $new_recipients = ['user5', 'user6'];
     $class->setRecipients($new_recipients);
     $this->assertEquals($new_recipients, $class->getRecipients());
 
     // Test recipient appending
     $new_recipient = 'user7';
     $class->appendRecipient($new_recipient);
-    $this->assertEquals(array('user5', 'user6', 'user7'), $class->getRecipients());
+    $this->assertEquals(['user5', 'user6', 'user7'], $class->getRecipients());
   }
 
   /**
@@ -89,7 +89,7 @@ class MessageTest extends MessageBaseTestCase {
    */
   public function testPriorityException() {
     $this->setExpectedException(InvalidArgumentException::class, "Given value type 'boolean' for 'priority' property is not a string.");
-    new Message($this->recipients, $this->source, array('priority' => TRUE));
+    new Message($this->recipients, $this->source, ['priority' => TRUE]);
   }
 
   /**
@@ -102,7 +102,7 @@ class MessageTest extends MessageBaseTestCase {
     $priority = $this->getRandomString();
 
     // Test that priority gets set through constructor
-    $class = new Message($this->recipients, $this->source, array('priority' => $priority));
+    $class = new Message($this->recipients, $this->source, ['priority' => $priority]);
     $this->assertEquals($priority, $class->getPriority());
 
     // Test that priority gets set and get properly

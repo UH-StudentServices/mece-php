@@ -10,7 +10,7 @@ namespace UniversityofHelsinki\MECE\tests;
 
 class MessageBaseTestCase extends \PHPUnit_Framework_TestCase {
 
-  protected $recipients = array('user1', 'user2', 'user3', 'user4');
+  protected $recipients = ['user1', 'user2', 'user3', 'user4'];
   protected $source;
 
   public function setUp() {

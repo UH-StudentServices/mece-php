@@ -64,7 +64,7 @@ class NotificationMessage extends Message {
    */
   private $requiredTimeZone;
 
-  public function __construct(array $recipients, $source, array $options = array()) {
+  public function __construct(array $recipients, $source, array $options = []) {
     parent::__construct($recipients, $source, $options);
 
     // Construct date values with required timezone
@@ -236,7 +236,7 @@ class NotificationMessage extends Message {
    * @return string
    */
   public function export() {
-    $properties = array(
+    $properties = [
       'recipients',
       'priority',
       'deadline',
@@ -249,7 +249,7 @@ class NotificationMessage extends Message {
       'linkText',
       'link',
       'avatarImageUrl',
-    );
+    ];
     $export = new \StdClass();
     foreach ($properties as $property) {
 

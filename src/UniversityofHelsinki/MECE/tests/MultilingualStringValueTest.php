@@ -34,11 +34,11 @@ class MultilingualStringValueTest extends PHPUnit_Framework_TestCase {
 
     // Assert default supported languages
     $class = new MultilingualStringValue();
-    $this->assertEquals(array('fi', 'en', 'sv'), $class->getSupportedLanguages());
+    $this->assertEquals(['fi', 'en', 'sv'], $class->getSupportedLanguages());
 
     // Assert that given supported languages are set
-    $class = new MultilingualStringValue(array('supportedLanguages' => array('ru')));
-    $this->assertEquals(array('ru'), $class->getSupportedLanguages());
+    $class = new MultilingualStringValue(['supportedLanguages' => ['ru']]);
+    $this->assertEquals(['ru'], $class->getSupportedLanguages());
   }
 
   /**
@@ -79,10 +79,10 @@ class MultilingualStringValueTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('terve', $this->class->getValue('fi'));
 
     // Test multiple values
-    $this->assertEquals(array('en' => 'hello', 'fi' => 'terve'), $this->class->getValues());
+    $this->assertEquals(['en' => 'hello', 'fi' => 'terve'], $this->class->getValues());
 
     // Test whole set/get values
-    $values = array('fi' => 'terve', 'en' => 'hello', 'sv' => 'hej');
+    $values = ['fi' => 'terve', 'en' => 'hello', 'sv' => 'hej'];
     $this->class->setValues($values);
     $this->assertEquals($values, $this->class->getValues());
 
@@ -94,7 +94,7 @@ class MultilingualStringValueTest extends PHPUnit_Framework_TestCase {
    */
   public function testSupportedLanguages() {
     // Test setter and getter
-    $values = array('fi', 'en');
+    $values = ['fi', 'en'];
     $this->class->setSupportedLanguages($values);
     $this->assertEquals($values, $this->class->getSupportedLanguages());
   }
