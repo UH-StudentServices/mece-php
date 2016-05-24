@@ -17,6 +17,7 @@ use InvalidArgumentException;
  * @author Mikael Kundert <mikael.kundert@wunderkraut.com>
  */
 class MultilingualStringValue {
+  use VersionTrait;
 
   /**
    * @var array

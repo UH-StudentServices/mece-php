@@ -19,6 +19,7 @@ use LogicException;
  * @author Mikael Kundert <mikael.kundert@wunderkraut.com>
  */
 class Message {
+  use VersionTrait;
 
   /*
    * Following list of properties are part of the service message.
