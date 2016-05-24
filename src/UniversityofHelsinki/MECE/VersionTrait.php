@@ -7,6 +7,13 @@
 
 namespace UniversityofHelsinki\MECE;
 
+/**
+ * Class VersionTrait
+ *
+ * Simple trait that can be used accross all library classes.
+ *
+ * @author Mikael Kundert <mikael.kundert@wunderkraut.com>
+ */
 trait VersionTrait {
   /**
    * Returns the version of this library.

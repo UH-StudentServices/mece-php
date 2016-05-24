@@ -12,7 +12,13 @@ use DateTimeZone;
 use InvalidArgumentException;
 use LogicException;
 
-
+/**
+ * Class NotificationMessage
+ *
+ * Extends basic message class an represents an notification message.
+ *
+ * @author Mikael Kundert <mikael.kundert@wunderkraut.com>
+ */
 class NotificationMessage extends Message {
 
   /**

@@ -8,6 +8,10 @@
 namespace UniversityofHelsinki\MECE\tests;
 
 
+/**
+ * Class MessageBaseTestCase
+ * @author Mikael Kundert <mikael.kundert@wunderkraut.com>
+ */
 class MessageBaseTestCase extends \PHPUnit_Framework_TestCase {
 
   protected $recipients = ['user1', 'user2', 'user3', 'user4'];

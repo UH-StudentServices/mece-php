@@ -12,6 +12,10 @@ use UniversityofHelsinki\MECE\Message;
 use UniversityofHelsinki\MECE\MultilingualStringValue;
 use UniversityofHelsinki\MECE\NotificationMessage;
 
+/**
+ * Class VersionTraitTest
+ * @author Mikael Kundert <mikael.kundert@wunderkraut.com>
+ */
 class VersionTraitTest extends PHPUnit_Framework_TestCase {
   private $expectedVersion = '1.0.0-dev';
 
