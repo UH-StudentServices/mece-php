@@ -1,5 +1,5 @@
 {
-  "name": "UniversityofHelsinki/MECE",
+  "name": "universityofhelsinki/mece",
   "type": "library",
   "description": "This library provides ability to build message objects for Universify of Helsinki Message Center",
   "keywords": ["messaging", "mece", "university"],
