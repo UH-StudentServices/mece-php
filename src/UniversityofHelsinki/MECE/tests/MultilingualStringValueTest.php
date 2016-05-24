@@ -9,12 +9,13 @@ namespace UniversityofHelsinki\MECE\tests;
 
 use UniversityofHelsinki\MECE\MultilingualStringValue;
 use InvalidArgumentException;
+use PHPUnit_Framework_TestCase;
 
 /**
  * @coversDefaultClass \UniversityofHelsinki\MECE\MultilingualStringValue
  * @author Mikael Kundert <mikael.kundert@wunderkraut.com>
  */
-class MultilingualStringValueTest extends \PHPUnit_Framework_TestCase {
+class MultilingualStringValueTest extends PHPUnit_Framework_TestCase {
 
   /**
    * @var MultilingualStringValue

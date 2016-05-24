@@ -7,7 +7,6 @@
 
 namespace UniversityofHelsinki\MECE;
 
-use DateTime;
 use InvalidArgumentException;
 use LogicException;
 
