@@ -82,14 +82,13 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Setter method for setting deadline.
    * @param DateTime $deadline
    * @return void
    */
   public function setDeadline(DateTime $deadline) {
 
     // Deadline can't be after expiration
-    if ($deadline->getTimestamp() > $this->getExpiration()->getTimestamp()) {
+    if ($deadline > $this->getExpiration()) {
       throw new LogicException('Deadline can not be after expiration.');
     }
 
@@ -97,7 +96,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Getter method for getting deadline.
    * @return DateTime
    */
   public function getDeadline() {
@@ -105,17 +103,16 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Setter method for setting expiration.
    * @param DateTime $expiration
    * @return void
    */
   public function setExpiration(DateTime $expiration) {
 
     // Expiration can't be before submitted or deadline
-    if ($expiration->getTimestamp() < $this->getSubmitted()->getTimestamp()) {
+    if ($expiration < $this->getSubmitted()) {
       throw new LogicException('Expiration can not be before submitted.');
     }
-    if ($expiration->getTimestamp() < $this->getDeadline()->getTimestamp()) {
+    if ($expiration < $this->getDeadline()) {
       throw new LogicException('Expiration can not be before deadline.');
     }
 
@@ -123,7 +120,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Getter method for getting expiration.
    * @return DateTime
    */
   public function getExpiration() {
@@ -131,14 +127,13 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Setter method for setting submitted.
    * @param DateTime $submitted
    * @return void
    */
   public function setSubmitted(DateTime $submitted) {
 
     // Submitted can't be after expiration
-    if ($submitted->getTimestamp() > $this->getExpiration()->getTimestamp()) {
+    if ($submitted > $this->getExpiration()) {
       throw new LogicException('Submitted can not be after expiration.');
     }
 
@@ -146,7 +141,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Getter method for getting submitted.
    * @return mixed
    */
   public function getSubmitted() {
@@ -154,7 +148,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Setter method for setting heading.
    * @param MultilingualStringValue $heading
    * @return void
    */
@@ -163,7 +156,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Getter method for getting heading.
    * @return MultilingualStringValue
    */
   public function getHeading() {
@@ -171,7 +163,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Setter method for setting message.
    * @param MultilingualStringValue $message
    * @return void
    */
@@ -180,7 +171,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Getter method for getting message.
    * @return MultilingualStringValue
    */
   public function getMessage() {
@@ -188,7 +178,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Setter method for setting link text.
    * @param MultilingualStringValue $linkText
    * @return void
    */
@@ -197,7 +186,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Getter method for getting link text.
    * @return MultilingualStringValue
    */
   public function getLinkText() {
@@ -205,7 +193,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Setter method for setting link.
    * @param MultilingualStringValue $link
    * @return void
    */
@@ -214,7 +201,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Getter method for getting link.
    * @return MultilingualStringValue
    */
   public function getLink() {
@@ -222,7 +208,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Setter method for setting avatar image URL.
    * @param string $avatarImageUrl
    * @return void
    */
@@ -231,7 +216,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Getter method for getting avatar image URL.
    * @return string
    */
   public function getAvatarImageUrl() {
@@ -257,7 +241,7 @@ class NotificationMessage extends Message {
       'link',
       'avatarImageUrl',
     ];
-    $export = new \StdClass();
+    $export = new \stdClass();
     foreach ($properties as $property) {
 
       // Define getter method for property and ensure it exists
