@@ -75,7 +75,6 @@ class MultilingualStringValue {
   }
 
   /**
-   * Getter callback for given language.
    * @param string $language
    * @return string|null
    *   Returns an string of given language when available. Returns NULL if value

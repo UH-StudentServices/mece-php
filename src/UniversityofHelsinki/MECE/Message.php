@@ -114,7 +114,6 @@ class Message {
   }
 
   /**
-   * Setter method for setting priority.
    * @param string $priority
    * @return void
    */
@@ -123,7 +122,6 @@ class Message {
   }
 
   /**
-   * Getter method for getting priority.
    * @return string
    */
   public function getPriority() {
@@ -131,7 +129,6 @@ class Message {
   }
 
   /**
-   * Setter method for setting source.
    * @param string $source
    * @return void
    */
@@ -140,7 +137,6 @@ class Message {
   }
 
   /**
-   * Getter method for getting source.
    * @return string
    */
   public function getSource() {
@@ -148,7 +144,6 @@ class Message {
   }
 
   /**
-   * Setter method for setting source id.
    * @param string $sourceId
    * @return void
    */
@@ -157,7 +152,6 @@ class Message {
   }
 
   /**
-   * Getter method for getting source id.
    * @return string
    */
   public function getSourceId() {

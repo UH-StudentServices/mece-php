@@ -97,7 +97,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Getter method for getting deadline.
    * @return DateTime
    */
   public function getDeadline() {
@@ -123,7 +122,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Getter method for getting expiration.
    * @return DateTime
    */
   public function getExpiration() {
@@ -146,7 +144,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Getter method for getting submitted.
    * @return mixed
    */
   public function getSubmitted() {
@@ -154,7 +151,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Setter method for setting heading.
    * @param MultilingualStringValue $heading
    * @return void
    */
@@ -163,7 +159,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Getter method for getting heading.
    * @return MultilingualStringValue
    */
   public function getHeading() {
@@ -171,7 +166,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Setter method for setting message.
    * @param MultilingualStringValue $message
    * @return void
    */
@@ -180,7 +174,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Getter method for getting message.
    * @return MultilingualStringValue
    */
   public function getMessage() {
@@ -188,7 +181,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Setter method for setting link text.
    * @param MultilingualStringValue $linkText
    * @return void
    */
@@ -197,7 +189,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Getter method for getting link text.
    * @return MultilingualStringValue
    */
   public function getLinkText() {
@@ -205,7 +196,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Setter method for setting link.
    * @param MultilingualStringValue $link
    * @return void
    */
@@ -214,7 +204,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Getter method for getting link.
    * @return MultilingualStringValue
    */
   public function getLink() {
@@ -222,7 +211,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Setter method for setting avatar image URL.
    * @param string $avatarImageUrl
    * @return void
    */
@@ -231,7 +219,6 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Getter method for getting avatar image URL.
    * @return string
    */
   public function getAvatarImageUrl() {
