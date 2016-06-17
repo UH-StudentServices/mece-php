@@ -15,7 +15,7 @@ curl -sS https://getcomposer.org/installer | php
 Get package to your directory
 
 ```bash
-php composer.phar require universityofhelsinki/mece:v1.0.1
+php composer.phar require universityofhelsinki/mece:v1.0.2
 ```
 
 ## Usage with Guzzle
