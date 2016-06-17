@@ -244,7 +244,7 @@ class NotificationMessage extends Message {
       'link',
       'avatarImageUrl',
     ];
-    $export = new \StdClass();
+    $export = new \stdClass();
     foreach ($properties as $property) {
 
       // Define getter method for property and ensure it exists
