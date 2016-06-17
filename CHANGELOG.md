@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.0.x-dev
+## v1.0.2
 
 * Fixed class name reference (issue #2)
 * Fixed typos in comments and exception messages (issue #2)
