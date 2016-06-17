@@ -82,14 +82,13 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Setter method for setting deadline.
    * @param DateTime $deadline
    * @return void
    */
   public function setDeadline(DateTime $deadline) {
 
     // Deadline can't be after expiration
-    if ($deadline->getTimestamp() > $this->getExpiration()->getTimestamp()) {
+    if ($deadline > $this->getExpiration()) {
       throw new LogicException('Deadline can not be after expiration.');
     }
 
@@ -104,17 +103,16 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Setter method for setting expiration.
    * @param DateTime $expiration
    * @return void
    */
   public function setExpiration(DateTime $expiration) {
 
     // Expiration can't be before submitted or deadline
-    if ($expiration->getTimestamp() < $this->getSubmitted()->getTimestamp()) {
+    if ($expiration < $this->getSubmitted()) {
       throw new LogicException('Expiration can not be before submitted.');
     }
-    if ($expiration->getTimestamp() < $this->getDeadline()->getTimestamp()) {
+    if ($expiration < $this->getDeadline()) {
       throw new LogicException('Expiration can not be before deadline.');
     }
 
@@ -129,14 +127,13 @@ class NotificationMessage extends Message {
   }
 
   /**
-   * Setter method for setting submitted.
    * @param DateTime $submitted
    * @return void
    */
   public function setSubmitted(DateTime $submitted) {
 
     // Submitted can't be after expiration
-    if ($submitted->getTimestamp() > $this->getExpiration()->getTimestamp()) {
+    if ($submitted > $this->getExpiration()) {
       throw new LogicException('Submitted can not be after expiration.');
     }
 
