@@ -71,11 +71,11 @@ class Message {
 
     // Check source and set it
     if (!is_string($source)) {
-      throw new InvalidArgumentException('Source must be an string.');
+      throw new InvalidArgumentException('Source must be a string.');
     }
     $this->setSource($source);
 
-    // Priority and supported langauges can be set from options.
+    // Priority and supported languages can be set from options.
     $options['priority'] = !empty($options['priority']) ? $options['priority'] : '1';
     $this->setPriority($options['priority']);
     $options['supportedLanguages'] = (isset($options['supportedLanguages']) && is_array($options['supportedLanguages'])) ? $options['supportedLanguages'] : ['fi', 'en', 'sv'];

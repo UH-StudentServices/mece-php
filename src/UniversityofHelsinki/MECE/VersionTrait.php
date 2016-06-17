@@ -11,7 +11,7 @@ namespace UniversityofHelsinki\MECE;
  * Class VersionTrait
  * @package UniversityofHelsinki\MECE
  *
- * Simple trait that can be used accross all library classes.
+ * Simple trait that can be used across all library classes.
  *
  * @author Mikael Kundert <mikael.kundert@wunderkraut.com>
  */

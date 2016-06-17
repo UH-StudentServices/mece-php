@@ -57,7 +57,7 @@ class MessageTest extends MessageBaseTestCase {
    * @covers ::__construct
    */
   public function testSourceMustBeString() {
-    $this->setExpectedException(InvalidArgumentException::class, 'Source must be an string.');
+    $this->setExpectedException(InvalidArgumentException::class, 'Source must be a string.');
     new Message($this->recipients, TRUE);
   }
 

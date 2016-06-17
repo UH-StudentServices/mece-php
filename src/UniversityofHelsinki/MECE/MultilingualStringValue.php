@@ -35,7 +35,7 @@ class MultilingualStringValue {
    * options for the class.
    *
    * @param array $options
-   *   'supportedLanguages': List of supported langauges. If not given, then
+   *   'supportedLanguages': List of supported languages. If not given, then
    *                         constructor will set default values for you.
    */
   public function __construct(array $options = []) {
