@@ -192,6 +192,21 @@ class NotificationMessageTest extends MessageBaseTestCase {
 
   /**
    * Multilingual string property link should be able to set and get.
+   * @covers ::setLinkUrl
+   * @covers ::getLinkUrl
+   */
+  public function testSetGetLinkUrl() {
+    $class = new NotificationMessage($this->recipients, $this->source);
+    $newValue = new MultilingualStringValue();
+    $newValue->setValue($this->getRandomString(), 'fi');
+    $newValue->setValue($this->getRandomString(), 'en');
+    $newValue->setValue($this->getRandomString(), 'sv');
+    $class->setLinkUrl($newValue);
+    $this->assertEquals($newValue, $class->getLinkUrl());
+  }
+
+  /**
+   * Multilingual string property link should be able to set and get.
    * @covers ::setLink
    * @covers ::getLink
    */
@@ -252,6 +267,7 @@ class NotificationMessageTest extends MessageBaseTestCase {
    * @covers ::setHeading
    * @covers ::setMessage
    * @covers ::setLinkText
+   * @covers ::setLinkUrl
    * @covers ::setLink
    * @covers ::export
    */
@@ -279,13 +295,25 @@ class NotificationMessageTest extends MessageBaseTestCase {
     $linkText->setValues(['fi' => 'LinkText FI', 'en' => 'LinkText EN', 'sv' => 'LinkText SV']);
     $class->setLinkText($linkText);
 
-    // Link
-    $link = new MultilingualStringValue();
-    $link->setValues(['fi' => 'http://www.example.com/fi', 'en' => 'http://www.example.com/en', 'sv' => 'http://www.example.com/sv']);
-    $class->setLink($link);
+    // LinkUrl
+    $linkUrl = new MultilingualStringValue();
+    $linkUrl->setValues(['fi' => 'http://www.example.com/fi', 'en' => 'http://www.example.com/en', 'sv' => 'http://www.example.com/sv']);
+    $class->setLinkUrl($linkUrl);
 
     // Now finally assert
-    $expectedJSON = '{"recipients":["user1","user2","user3","user4"],"priority":"1","deadline":"2016-01-24T13:00:00Z","expiration":"2016-01-24T15:00:00Z","submitted":"2016-01-24T11:00:00Z","source":"John Doe","sourceId":"ABC12345","headingFI":"Heading FI","headingEN":"Heading EN","headingSV":"Heading SV","heading":"Heading FI","messageFI":"Message FI","messageEN":"Message EN","messageSV":"Message SV","message":"Message FI","linkTextFI":"LinkText FI","linkTextEN":"LinkText EN","linkTextSV":"LinkText SV","linkText":"LinkText FI","linkFI":"http:\/\/www.example.com\/fi","linkEN":"http:\/\/www.example.com\/en","linkSV":"http:\/\/www.example.com\/sv","link":"http:\/\/www.example.com\/fi","avatarImageUrl":"https:\/\/www.example.com\/avatarXy.jpg"}';
+    $expectedJSON = '{"recipients":["user1","user2","user3","user4"],"priority":"1","deadline":"2016-01-24T13:00:00Z","expiration":"2016-01-24T15:00:00Z","submitted":"2016-01-24T11:00:00Z","source":"John Doe","sourceId":"ABC12345","headingFI":"Heading FI","headingEN":"Heading EN","headingSV":"Heading SV","heading":"Heading FI","messageFI":"Message FI","messageEN":"Message EN","messageSV":"Message SV","message":"Message FI","linkTextFI":"LinkText FI","linkTextEN":"LinkText EN","linkTextSV":"LinkText SV","linkText":"LinkText FI","linkUrlFI":"http:\/\/www.example.com\/fi","linkUrlEN":"http:\/\/www.example.com\/en","linkUrlSV":"http:\/\/www.example.com\/sv","linkUrl":"http:\/\/www.example.com\/fi","avatarImageUrl":"https:\/\/www.example.com\/avatarXy.jpg"}';
+    $this->assertEquals($expectedJSON, $class->export());
+
+    /*
+     * Now test using deprecated setters too.
+     */
+
+    // LinkUrl
+    $link = new MultilingualStringValue();
+    $link->setValues(['fi' => 'http://www.example.com/fi/deprecated', 'en' => 'http://www.example.com/en/deprecated', 'sv' => 'http://www.example.com/sv/deprecated']);
+    $class->setLink($link);
+
+    $expectedJSON = '{"recipients":["user1","user2","user3","user4"],"priority":"1","deadline":"2016-01-24T13:00:00Z","expiration":"2016-01-24T15:00:00Z","submitted":"2016-01-24T11:00:00Z","source":"John Doe","sourceId":"ABC12345","headingFI":"Heading FI","headingEN":"Heading EN","headingSV":"Heading SV","heading":"Heading FI","messageFI":"Message FI","messageEN":"Message EN","messageSV":"Message SV","message":"Message FI","linkTextFI":"LinkText FI","linkTextEN":"LinkText EN","linkTextSV":"LinkText SV","linkText":"LinkText FI","linkUrlFI":"http:\/\/www.example.com\/fi\/deprecated","linkUrlEN":"http:\/\/www.example.com\/en\/deprecated","linkUrlSV":"http:\/\/www.example.com\/sv\/deprecated","linkUrl":"http:\/\/www.example.com\/fi\/deprecated","avatarImageUrl":"https:\/\/www.example.com\/avatarXy.jpg"}';
     $this->assertEquals($expectedJSON, $class->export());
   }
 

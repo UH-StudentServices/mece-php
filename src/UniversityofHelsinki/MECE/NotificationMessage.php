@@ -55,7 +55,7 @@ class NotificationMessage extends Message {
   /**
    * @var MultilingualStringValue
    */
-  protected $link;
+  protected $linkUrl;
 
   /**
    * @var string
@@ -196,15 +196,32 @@ class NotificationMessage extends Message {
    * @param MultilingualStringValue $link
    * @return void
    */
-  public function setLink(MultilingualStringValue $link) {
-    $this->link = $link;
+  public function setLinkUrl(MultilingualStringValue $link) {
+    $this->linkUrl = $link;
   }
 
   /**
    * @return MultilingualStringValue
    */
+  public function getLinkUrl() {
+    return $this->linkUrl;
+  }
+
+  /**
+   * @param MultilingualStringValue $link
+   * @return void
+   * @deprecated Use NotificationMessage::setLinkUrl() instead.
+   */
+  public function setLink(MultilingualStringValue $link) {
+    $this->setLinkUrl($link);
+  }
+
+  /**
+   * @return MultilingualStringValue
+   * @deprecated Use NotificationMessage::getLinkUrl() instead.
+   */
   public function getLink() {
-    return $this->link;
+    return $this->getLinkUrl();
   }
 
   /**
@@ -238,7 +255,7 @@ class NotificationMessage extends Message {
       'heading',
       'message',
       'linkText',
-      'link',
+      'linkUrl',
       'avatarImageUrl',
     ];
     $export = new \stdClass();
