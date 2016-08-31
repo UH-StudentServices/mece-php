@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.1.0
+
+* Implemented attribute rename change (link -> linkUrl, issue #3)
+
+
 ## v1.0.2
 
 * Fixed class name reference (issue #2)
@@ -11,3 +16,4 @@
 ## v1.0.1
 
 * Fixed issue where empty strings were exported in JSON (issue #1)
+
