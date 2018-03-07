@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.1.1
+
+* Fixed license name to comply SPDX list (issue #4)
+
+
 ## v1.1.0
 
 * Implemented attribute rename change (link -> linkUrl, issue #3)

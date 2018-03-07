@@ -4,7 +4,7 @@
   "description": "This library provides ability to build message objects for Universify of Helsinki Message Center",
   "keywords": ["messaging", "mece", "university"],
   "homepage": "http://www.helsinki.fi",
-  "license": "GPLv3",
+  "license": "GPL-3.0-only",
   "authors": [
     {
       "name": "Mikael Kundert",
