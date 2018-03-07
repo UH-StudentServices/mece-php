@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.1.x
+## v1.1.1
 
 * Fixed license name to comply SPDX list (issue #4)
 

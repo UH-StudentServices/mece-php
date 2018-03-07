@@ -18,7 +18,7 @@ use UniversityofHelsinki\MECE\NotificationMessage;
  * @author Mikael Kundert <mikael.kundert@wunderkraut.com>
  */
 class VersionTraitTest extends PHPUnit_Framework_TestCase {
-  private $expectedVersion = '1.1.x-dev';
+  private $expectedVersion = '1.1.1';
 
   /**
    * @covers Message::getVersion
