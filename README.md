@@ -1,3 +1,5 @@
+## Archived 21.2.2023 as deprecated & not being developed
+
 # MECE PHP Library
 Offers an PHP library for preparing an message for Message Center (MECE)
 maintained by Center for Information Technology (University of Helsinki).
